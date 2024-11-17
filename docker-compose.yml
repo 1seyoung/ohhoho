@@ -9,8 +9,17 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    env_file:
-      - .env  # 환경 변수 파일 로드
+    environment:
+      DATABASE_URL: "mysql+pymysql://user:password@db:3306/memodb"
+
+  streamlit:
+    build:
+      context: ./streamlit
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    depends_on:
+      - app
 
   db:
     image: mysql:8.0
