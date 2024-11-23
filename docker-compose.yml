@@ -10,7 +10,9 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: "mysql+pymysql://user:password@db:3306/memodb"
+      DATABASE_URL: "${DATABASE_URL}"  # .env 파일의 DATABASE_URL 사용
+    networks:
+      - test_network
 
   streamlit:
     build:
@@ -20,13 +22,24 @@ services:
       - "8501:8501"
     depends_on:
       - app
+    networks:
+      - test_network
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: memodb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"  # .env 파일의 MYSQL_ROOT_PASSWORD 사용
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"           # .env 파일의 MYSQL_DATABASE 사용
+      MYSQL_USER: "${MYSQL_USER}"                   # .env 파일의 MYSQL_USER 사용
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"           # .env 파일의 MYSQL_PASSWORD 사용
     ports:
       - "3306:3306"
+    networks:
+      - test_network
+
+volumes:
+  mysql-data:
+
+networks:
+  test_network:
+    driver: bridge

@@ -1,5 +1,5 @@
-from cache_system.src.cache import Cache  # Cache 클래스 임포트
-from cache_system.src.lock import FIFOLock, PriorityBasedLock, RandomLock  # 필요한 락 클래스 임포트
+from cache.src.cache import Cache  # Cache 클래스 임포트
+from cache.src.lock import FIFOLock, PriorityBasedLock, RandomLock  # 필요한 락 클래스 임포트
 import threading
 
 #캐시 생성

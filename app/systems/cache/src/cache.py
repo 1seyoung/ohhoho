@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from threading import Lock  
-from cache_system.src.lock import *
+from cache.src.lock import *
 
 #LRU / LFU 캐시
 class Cache:

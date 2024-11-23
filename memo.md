@@ -62,3 +62,11 @@ with open("example.txt", "w") as file:
 커스텀 락에서도 with를 사용하려면 __enter__이랑 __exit__ 를 추가해얗마
 
 
+
+
+11/17
+
+db : mysql
+front : streamlit
+back : fast api
+deploy : AWS Free Tier
